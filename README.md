@@ -5,8 +5,8 @@
 ## Introduction to Convolutional Neural Networks for Visual Recognition
 ### What  is the task in computer vision
 **Theory:**
-- David Marr (1970s)![Alt text](./1534516402882.png)
-- Every object is compose of simple geometric object(Brooks & Binford, Generalized Cylinder, 1979; Fischler and Elschlager, Pictorial Structure 1973.)![Alt text](./1534516745298.png)
+- David Marr (1970s)![Alt text](./pics/1534516402882.png)
+- Every object is compose of simple geometric object(Brooks & Binford, Generalized Cylinder, 1979; Fischler and Elschlager, Pictorial Structure 1973.)![Alt text](./pics/1534516745298.png)
 - David Lowe (1987) lines, edges, and their combination
 - David Lowe (1999) "SIFC" & Object Recognition
 **Mehonds**
@@ -14,7 +14,7 @@
 	- Using **graph algorithm** theory for  Image segmentation
 - Face detection, Viola & Jones 2001.
 	- Using **AdaBoost algorithm** do the Face detection
-- Spatial Pyramid Matching, Lazbnik, Schmid & Ponce, 2006![Alt text](./1534517542455.png)
+- Spatial Pyramid Matching, Lazbnik, Schmid & Ponce, 2006![Alt text](./pics/1534517542455.png)
 ***
 <font color='red'>**Good resource: http://image-net.org/**</font>
 ***
@@ -68,17 +68,17 @@ class NearestNeighbor:
 			
 		return Ypred
 ```
-![Alt text](./1534629768582.png)
+![Alt text](./pics/1534629768582.png)
 
 #### Distance Metric to compare images
 - L1(Manhattan) distance: $d_1(I_1,I_2) = \sum_p|I_1^p -I_2^P|$
-![Alt text](./1534629828029.png)
+![Alt text](./pics/1534629828029.png)
 - L2(Eclidean) distance $d_2(I_1,I_2) =\sqrt{\sum_p(I_1^p -I_2^P)^2}$
-![Alt text](./1534631418482.png)
+![Alt text](./pics/1534631418482.png)
 > Difference
 > - The L1 depends on your choice on coordinate systems (**Choose when input feature have important meaning for your test**)
 > - The L2 is independent on your choice on coordinate systems (**Choose when input vectors(feature) are just gemetric features from some space and you don't know which of the different elements mean**)
-> ![Alt text](./1534631911404.png)
+> ![Alt text](./pics/1534631911404.png)
 > The decision boundaries of L1 tend to follow the coordinate axes.
 > The decision boundaries of L2 don't care about about the coordinate axes.
 
@@ -86,11 +86,11 @@ class NearestNeighbor:
 #### K-Nearest Neighbors 
 
 > Instead of copy label from nearest neighbor, take majority vote from K closet point
-> ![Alt text](./1534631042744.png)
+> ![Alt text](./pics/1534631042744.png)
 **K-Nearest Neighbors on images never used**
 **Problems:**
-- Very slow at test time and the Distance metrics on pixels are not infromative![Alt text](./1534633574334.png)
-- Curse of dimensionality: if we expect the K-nearest neighbor to work well, we kind of need our training examples to cover the space quite densely. Otherwise our nearest neighbors could actually be quite far away and might not actually be very similar to our testing.![Alt text](./1534634092423.png)
+- Very slow at test time and the Distance metrics on pixels are not infromative![Alt text](./pics/1534633574334.png)
+- Curse of dimensionality: if we expect the K-nearest neighbor to work well, we kind of need our training examples to cover the space quite densely. Otherwise our nearest neighbors could actually be quite far away and might not actually be very similar to our testing.![Alt text](./pics/1534634092423.png)
 
 ##### Hyperparameters
 > - What is the best metrics 
@@ -99,18 +99,18 @@ class NearestNeighbor:
 - Idea #1: Choose hyperparametes that work best on the data <font color='red'>**Bad**: k=1 always works perfectly on  trainning data</font>
 - Idea #2: Split data into train and test, choose hyperparameters htat work best on test data <font color='red'>**Bad**:  No idea how algorithm will perform on new data</font>
 - Idea #3: Split data into train, val, and test; choose hyperparamters on val and eveluate on test <font color='green'>**Better** </font>
-- Idea #4: Cross-Validation: Split data into folds, try each fold as validation and average the results. **Useful for small datasets, but not used too frequently on deep learning**![Alt text](./1534633236341.png)
+- Idea #4: Cross-Validation: Split data into folds, try each fold as validation and average the results. **Useful for small datasets, but not used too frequently on deep learning**![Alt text](./pics/1534633236341.png)
 
-![Alt text](./1534633511390.png)
+![Alt text](./pics/1534633511390.png)
 
 #### Linear classifiers
 ##### Parametric Approach
-![Alt text](./1534634638854.png)
-![Alt text](./1534635251970.png)
+![Alt text](./pics/1534634638854.png)
+![Alt text](./pics/1534635251970.png)
 
 ##### Hard cases for linear classifier
 **We cannot draw a single line to separate two classes**
-![Alt text](./1534635324320.png)
+![Alt text](./pics/1534635324320.png)
 
 
 ##### Loss function
@@ -121,7 +121,7 @@ class NearestNeighbor:
 0& s_{y_i} \ge s_j +1\\
 s_j - s_{y_i} + 1& Otherwise
 \end{cases}  \\
-= \sum_{j \neq y_i} max(0,s_j - s_{y_i} + 1)$$![Alt text](./1534649939294.png)
+= \sum_{j \neq y_i} max(0,s_j - s_{y_i} + 1)$$![Alt text](./pics/1534649939294.png)
 
 ```python
 def L_i_vectorized(x,y,W)：
@@ -152,8 +152,8 @@ def L_i_vectorized(x,y,W)：
 - No, 2W is also has L = 0!
 
 > $L(W) = \frac{1}{N}\sum_{i=1}^N L_i(f(x_i,W),y_i)$ will overfit the training data, so:
-> ![Alt text](./1534724772945.png)
-> ![Alt text](./1534725037401.png)
+> ![Alt text](./pics/pics/1534724772945.png)
+> ![Alt text](./pics/1534725037401.png)
 
 
 
@@ -163,7 +163,7 @@ def L_i_vectorized(x,y,W)：
 >Want to maximize the log likelihood, or( for a **loss function**) to minimize the negative log likelihood of the correct class: $L_i = -log P(Y = y_i | X = x_i)$
 >In summary : $L_i = -log(\frac{e^{sy_i}}{\sum_j e^{sj}})$
 >Eg:
->![Alt text](./1534726210466.png)
+>![Alt text](./pics/1534726210466.png)
 
 **Q1: Usually at initialization W is small, so all $s\approx 0$. What is the loss?**
 - $L_i = logC$ 
@@ -171,17 +171,17 @@ def L_i_vectorized(x,y,W)：
 ###### Softmax vs. SVM
 SVM get data point over the bar to be correctly classified and then just give up.
 Softmax always try to continually improve the every single data point to get better and better.
-![Alt text](./1534726628699.png)
+![Alt text](./pics/1534726628699.png)
 
-![Alt text](./1534726873454.png)
+![Alt text](./pics/1534726873454.png)
 
 ### Optimization
 #### Follow the slop
 The slop in any direction is the dot product of the direction with the gradient. The direction of steepest descent is the negative gradient.
 - In 1-dimension, the derivative of a function: $\frac{df(x)}{dx}=\lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$, 
 - In multiple dimensions, the gradient is the vector of (partial derivatives) along each dimension
-![Alt text](./1534727731280.png)
-![Alt text](./1534727853945.png)
+![Alt text](./pics/1534727731280.png)
+![Alt text](./pics/1534727853945.png)
 In practice: Always use analytic gradient, but check implementation with numerical gradient. This is called a **gradient check**
 
 #### Gradient Descent
@@ -196,26 +196,26 @@ while true:
 ```
 
 ##### Stochastic Gradient Descent (SGD)
-![Alt text](./1534728614991.png)
+![Alt text](./pics/1534728614991.png)
 
 #### Feature representation 
-![Alt text](./1534729810239.png)
+![Alt text](./pics/1534729810239.png)
 
 
 ### Using computational graphs to compute gradient descent
 
-![Alt text](./1535040070701.png)
+![Alt text](./pics/1535040070701.png)
 #### Backpropagation
 - Set variables to each node
 - Compute current gradient given the next variable. such as: the node $p = \frac{\partial f}{\partial{p}}$
 - Multiply upstream gradient. According to the chain rule, $x = \frac{\partial f}{\partial x} =  \frac{\partial f}{\partial p} \times  \frac{\partial p}{\partial x} $
-![Alt text](./1535040547062.png)
-![Alt text](./1535041266051.png)
-![Alt text](./1535041593627.png)
-![Alt text](./1535044658044.png)
+![Alt text](./pics/1535040547062.png)
+![Alt text](./pics/1535041266051.png)
+![Alt text](./pics/1535041593627.png)
+![Alt text](./pics/1535044658044.png)
 
 **Example:**
-![Alt text](./1535057741282.png)
+![Alt text](./pics/1535057741282.png)
 Q1: What is a max gate?
 >The max gate assign the local gradient 1 to the maximum and 0 to the minimum.
 So 
@@ -226,7 +226,7 @@ Q2: What is a mul gate?
 > The multiplication gate is the value of other variable.
 
 Q3: What is Jacobian matrix?
-> ![Alt text](./1535058355073.png)
+> ![Alt text](./pics/1535058355073.png)
 
 Q4: what is the size of the Jacobian matrix, if we have 4096-d input vector?
 > [4096, 4096]
@@ -265,8 +265,8 @@ def ComputationalGraph(object):
 - 2-layer Neural Network: $f =W_2\cdot max(0,W_1\cdot x)$, just a example, we can choose other non-linear function instead of `max`
 - or 3-layer $f =W_3 \cdot max(0, W_2\cdot max(0,W_1\cdot x))$
 - or ...N-layer
-![Alt text](./1535314811507.png)
-![Alt text](./1535315686634.png)
+![Alt text](./pics/1535314811507.png)
+![Alt text](./pics/1535315686634.png)
 
 feed-forward computation of a neural network
 ```
@@ -281,6 +281,6 @@ class Neuron:
 
 ## Assignment 1
 ### How to get the gradient for 2-layer net with softmax loss function by computational graph
-![Alt text](./1536269972067.png)
+![Alt text](./pics/1536269972067.png)
 
 
