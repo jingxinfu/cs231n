@@ -283,4 +283,46 @@ class Neuron:
 ### How to get the gradient for 2-layer net with softmax loss function by computational graph
 ![Alt text](./pics/1536269972067.png)
 
+## Training Neural Networks
+1. One time setup
+	- activation functions,preprocessing,weight initialization,regularization,gradient checking
+2. Training dynamics
+	- babysitting the learning process
+	- paramater updates, hyperparameter optimization
+3. Evaluation
+	- model ensembles
+
+### Part 1
+#### Activation functions
+##### Sigmoid:
+![](./pics/sigmoid_function.png)
+$\sigma(x)=1/(1+e^{-x})$
+- squashes numbers to range[0,1]
+- historically popular since they have nice interpretation as a saturating "firing rate" of a neuron.
+
+>problems:
+>- Saturated neuron will kill the gradient.
+>- sigmoid outputs are not zero-centered.
+>- exp() is a bit computational expensive
+
+##### tanh(x)
+![](./pics/tanh_x.png)
+- squanshes numbers to range [-1,1]
+- zeroce centered
+> problems
+>- still kills gradients when saturated.
+
+##### ReLU (Rectified Linear Unit)
+![](./pics/relu.png)
+$f(x)=max(0,x)$
+- Does not saturate (in + region)
+- Very computationallly efficient
+- Converges much faster than sigmoid/tanh in practice (e.g. 6x)
+- Actually more biologically plausible than sigmoid
+> problem
+> - Not zero-centered output
+> - An annoyance: Kill the gradient in half of the regime
+
+
+
 
