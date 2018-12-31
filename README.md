@@ -1,7 +1,7 @@
 @(Math)[CNN]
 
 #CS231n
-[toc]
+[TOC]
 ## Introduction to Convolutional Neural Networks for Visual Recognition
 ### What  is the task in computer vision
 **Theory:**
@@ -218,8 +218,9 @@ while true:
 ![Alt text](./pics/1535057741282.png)
 Q1: What is a max gate?
 >The max gate assign the local gradient 1 to the maximum and 0 to the minimum.
-So 
-- The  z gradient is upstream 2 multiplying 1, equaling to 2
+>So 
+>
+>- The  z gradient is upstream 2 multiplying 1, equaling to 2
 - The w gradient is upstream 2 multiplying 0, equaling to 0
 
 Q2: What is a mul gate?
@@ -310,7 +311,8 @@ $\sigma(x)=1/(1+e^{-x})$
 - squanshes numbers to range [-1,1]
 - zeroce centered
 > problems
->- still kills gradients when saturated.
+>
+> - still kills gradients when saturated.
 
 ##### ReLU (Rectified Linear Unit)
 ![](./pics/relu.png)
